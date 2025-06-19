@@ -1,54 +1,52 @@
 import {AiFillStar} from 'react-icons/ai'
+import {IoLocationSharp} from 'react-icons/io5'
+import {BsFillBriefcaseFill} from 'react-icons/bs'
 import {Link} from 'react-router-dom'
-import {HiLocationMarker, HiMail} from 'react-icons/hi'
 import './index.css'
 
 const JobCard = props => {
   const {jobDetails} = props
   const {
-    title,
     companyLogoUrl,
-    rating,
     employmentType,
-    location,
-    id,
-    packagePerAnnum,
     jobDescription,
+    location,
+    packagePerAnnum,
+    rating,
+    title,
+    id,
   } = jobDetails
-
   return (
-    <Link to={`/jobs/${id}`} className="link-item">
-      <li className="job-list-items">
-        <div className="company-container">
-          <div>
-            <img src={companyLogoUrl} alt="company logo" className="logo-url" />
-          </div>
-          <div>
-            <h1 className="company-title">{title}</h1>
-            <div className="star-icon-container">
-              <AiFillStar className="star-icon" />
-              <p className="rating-count">{rating}</p>
+    <Link to={`/jobs/${id}`} className="job-card-link">
+      <li className="job-card">
+        <div className="logo-title-container-card">
+          <img
+            src={companyLogoUrl}
+            alt="company logo"
+            className="company-logo-card"
+          />
+          <div className="title-rating-container-card">
+            <h1 className="job-title-card">{title}</h1>
+            <div className="rating-container-card">
+              <AiFillStar className="star-icon-card" />
+              <p className="rating-number-card">{rating}</p>
             </div>
           </div>
         </div>
-        <div className="location-container-flex-content">
-          <div className="location-desc">
-            <div className="star-icon-container">
-              <HiLocationMarker className="location-icon" />
-              <p className="location-desc description">{location}</p>
-            </div>
-            <div className="star-icon-container">
-              <HiMail className="location-icon left-icon" />
-              <p className="emp-type description">{employmentType}</p>
-            </div>
+        <div className="location-package-container-card">
+          <div className="icon-type-container-card">
+            <IoLocationSharp className="type-icon" />
+            <p className="type-text">{location}</p>
           </div>
-          <div className="star-icon-container">
-            <p className="package-desc description">{packagePerAnnum}</p>
+          <div className="icon-type-container-card">
+            <BsFillBriefcaseFill className="type-icon" />
+            <p>{employmentType}</p>
           </div>
+          <p className="package-text">{packagePerAnnum}</p>
         </div>
-        <hr className="line" />
-        <h1 className="desc-heading">Description</h1>
-        <p className="job-description">{jobDescription}</p>
+        <hr className="separator" />
+        <h1 className="description-heading-card">Description</h1>
+        <p className="job-description-card">{jobDescription}</p>
       </li>
     </Link>
   )
